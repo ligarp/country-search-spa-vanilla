@@ -1,0 +1,50 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.country-item {
+  @apply max-w-sm w-full rounded overflow-hidden shadow-lg;
+}
+
+.country-item:hover {
+  cursor: pointer;
+  @apply shadow-2xl;
+}
+
+.country-container {
+  @apply px-4 py-6 mx-auto grid grid-cols-1 gap-4;
+}
+
+tr {
+  @apply border;
+}
+td {
+  @apply px-4 py-2 text-gray-700 text-sm;
+}
+td:first-child {
+  @apply w-3/5;
+}
+
+td:nth-child(2) {
+  @apply w-2/5;
+}
+
+@screen sm {
+  .country-container {
+    @apply grid-cols-2;
+  }
+}
+
+@screen md {
+  .country-container {
+    @apply grid-cols-3;
+  }
+}
+
+@screen lg {
+  .country-container {
+    @apply grid-cols-4;
+  }
+}
