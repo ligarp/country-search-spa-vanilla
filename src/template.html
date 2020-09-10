@@ -9,60 +9,18 @@
     <header
       class="bg-green-500 w-full h-40 md:h-56 lg:h-64 mx-auto px-4 flex flex-col justify-center"
     >
-      <h3 class="text-center">Header Text</h3>
+      <h3
+        class="font-serif text-center text-2xl subpixel-antialiased text-white mb-4"
+      >
+        Find Coutry Information
+      </h3>
       <input
-        class="bg-white w-1/4 focus:outline-none focus:shadow-outline border border-green-300 rounded-lg py-2 px-4 mx-auto block appearance-none leading-normal"
-        type="email"
-        placeholder="jane@example.com"
+        id="search"
+        class="bg-white w-3/4 md:w-2/4 lg:w-1/4 xl:w-1/4 focus:outline-none focus:shadow-outline border border-green-300 rounded-lg py-2 px-4 mx-auto block appearance-none leading-normal"
+        type="text"
+        placeholder="Search Country"
       />
     </header>
-    <div class="container country-container">
-      <div class="country-item">
-        <img
-          class="w-full"
-          src="https://restcountries.eu/data/afg.svg"
-          alt="Sunset in the mountains"
-        />
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl">Afghanistan</div>
-          <div class="text-md text-gray-800 mb-2">(افغانستان)</div>
-
-          <table class="table-auto w-full">
-            <tbody>
-              <tr>
-                <td>Region</td>
-                <td>Asia</td>
-              </tr>
-              <tr>
-                <td>Subregion</td>
-                <td>Southern Asia</td>
-              </tr>
-              <tr>
-                <td>Capital</td>
-                <td>Kabu</td>
-              </tr>
-              <tr>
-                <td>Currency</td>
-                <td>RP</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="px-6 pt-4 pb-2">
-          <!-- <span
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-            >#photography</span
-          >
-          <span
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-            >#travel</span
-          >
-          <span
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-            >#winter</span
-          > -->
-        </div>
-      </div>
-    </div>
+    <div id="root"></div>
   </body>
 </html>

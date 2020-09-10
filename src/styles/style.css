@@ -8,6 +8,10 @@
   @apply max-w-sm w-full rounded overflow-hidden shadow-lg;
 }
 
+.country-item table {
+  @apply overflow-auto;
+}
+
 .country-item:hover {
   cursor: pointer;
   @apply shadow-2xl;
@@ -31,6 +35,10 @@ td:nth-child(2) {
   @apply w-2/5;
 }
 
+.country-detail {
+  @apply px-4 py-6 mx-auto grid grid-cols-1 gap-6;
+}
+
 @screen sm {
   .country-container {
     @apply grid-cols-2;
@@ -39,12 +47,27 @@ td:nth-child(2) {
 
 @screen md {
   .country-container {
-    @apply grid-cols-3;
+    @apply grid-cols-2;
+  }
+  .country-detail {
+    @apply grid-cols-2 gap-8;
   }
 }
 
 @screen lg {
   .country-container {
+    @apply grid-cols-3;
+  }
+  .country-detail {
+    @apply grid-cols-2 gap-8;
+  }
+}
+
+@screen xl {
+  .country-container {
     @apply grid-cols-4;
+  }
+  .country-detail {
+    @apply grid-cols-2 gap-8;
   }
 }
