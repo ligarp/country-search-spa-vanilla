@@ -3,6 +3,7 @@ import "./styles/style.css";
 import Navigo from "navigo";
 import "./components/country-list";
 import "./components/country-detail";
+import "./components/error-message";
 
 var root = null;
 var useHash = true;
@@ -31,6 +32,10 @@ function renderCountryList() {
     .then((resJson) => {
       data = resJson;
       changeList(data);
+    })
+    .catch((error) => {
+      alert("Please check your internet connection!");
+      errorMessage(error.message);
     });
 }
 
@@ -70,7 +75,11 @@ searchInput.addEventListener("keyup", (event) => {
         .toLowerCase()
         .includes(event.target.value.toLowerCase())
   );
-  changeList(newCountryList);
+  if (newCountryList.length > 0) {
+    changeList(newCountryList);
+  } else {
+    errorMessage(`Country '${searchInput.value}' not Found!`);
+  }
 });
 
 function showDetails(code) {
@@ -80,14 +89,33 @@ function showDetails(code) {
   fetch(`https://restcountries.eu/rest/v2/alpha/${code}`)
     .then((res) => res.json())
     .then((resJson) => {
-      changeHeader("detail-header", resJson.name);
-      const root = document.getElementById("root");
-      const countryDetailElement = document.createElement("country-detail");
-      countryDetailElement.setAttribute("class", "container detail-container");
-      countryDetailElement.country = resJson;
-      root.innerHTML = "";
-      root.appendChild(countryDetailElement);
+      if (resJson.status == 400) {
+        errorMessage("Data not Found!");
+      } else {
+        changeHeader("detail-header", resJson.name);
+        const root = document.getElementById("root");
+        const countryDetailElement = document.createElement("country-detail");
+        countryDetailElement.setAttribute(
+          "class",
+          "container detail-container"
+        );
+        countryDetailElement.country = resJson;
+        root.innerHTML = "";
+        root.appendChild(countryDetailElement);
+      }
+    })
+    .catch((error) => {
+      alert("Please check your internet connection!");
+      errorMessage(error.message);
     });
+}
+
+function errorMessage(msg) {
+  const root = document.getElementById("root");
+  const errorElement = document.createElement("error-message");
+  errorElement.error = msg;
+  root.innerHTML = "";
+  root.appendChild(errorElement);
 }
 
 window.addEventListener("DOMContentLoaded", renderCountryList);
