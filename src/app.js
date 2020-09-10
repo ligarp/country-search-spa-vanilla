@@ -3,8 +3,6 @@ import "./styles/style.css";
 import Navigo from "navigo";
 import "./components/country-list";
 import "./components/country-detail";
-import "./components/index-header";
-import "./components/detail-header";
 
 var root = null;
 var useHash = true;
@@ -46,14 +44,34 @@ function changeList(list) {
 }
 
 function changeHeader(element, title = "") {
-  const header = document.getElementById("header");
-  const headerElement = document.createElement(`${element}`);
   if (element == "detail-header") {
-    headerElement.title = title;
+    const header1 = document.getElementById("header1");
+    const header2 = document.getElementById("header2");
+    header2.classList.remove("hidden");
+    header2.firstElementChild.firstElementChild.innerHTML = title;
+    header1.classList.add("hidden");
+  } else {
+    const header1 = document.getElementById("header1");
+    const header2 = document.getElementById("header2");
+    header2.classList.add("hidden");
+    header1.classList.remove("hidden");
   }
-  header.innerHTML = "";
-  header.appendChild(headerElement);
 }
+
+const searchInput = document.getElementById("search");
+searchInput.addEventListener("keyup", (event) => {
+  const newCountryList = data.filter(
+    (country) =>
+      country.name.toLowerCase().includes(event.target.value.toLowerCase()) ||
+      country.alpha2Code
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase()) ||
+      country.alpha3Code
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase())
+  );
+  changeList(newCountryList);
+});
 
 function showDetails(code) {
   changeHeader("detail-header");
@@ -65,7 +83,6 @@ function showDetails(code) {
       changeHeader("detail-header", resJson.name);
       const root = document.getElementById("root");
       const countryDetailElement = document.createElement("country-detail");
-      console.log(countryDetailElement);
       countryDetailElement.setAttribute("class", "container detail-container");
       countryDetailElement.country = resJson;
       root.innerHTML = "";

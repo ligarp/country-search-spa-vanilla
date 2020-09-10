@@ -5,7 +5,6 @@ class CountryDetail extends HTMLElement {
   }
 
   render() {
-    console.log(this._country);
     this.innerHTML = `
       <h1 class="text-4xl text-bold text-gray-900 mb-4">${
         this._country.name
