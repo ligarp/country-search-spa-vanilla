@@ -4,6 +4,17 @@
 
 @tailwind utilities;
 
+country-detail a {
+  @apply text-blue-500;
+}
+country-detail a:hover {
+  @apply text-green-500 font-bold;
+}
+
+footer a:hover {
+  @apply font-bold;
+}
+
 .country-item {
   @apply max-w-sm w-full rounded overflow-hidden shadow-lg;
 }
@@ -33,6 +44,14 @@ td:first-child {
 
 td:nth-child(2) {
   @apply w-2/5;
+}
+
+.detail-container {
+  @apply px-4 py-6 mx-auto grid grid-cols-1 gap-4;
+}
+
+.detail-container td {
+  @apply border px-4 py-2;
 }
 
 .country-detail {
