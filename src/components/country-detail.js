@@ -75,15 +75,12 @@ class CountryDetail extends HTMLElement {
               </tr>
             </thead>
             <tbody>
-            ${this._country.languages.map((lang) => {
-              return (
-                " <tr> <td>" +
-                lang.name +
-                "</td> <td>" +
-                lang.nativeName +
-                "</td> </tr> "
-              );
-            })}
+            <tr>
+            <td colspan="2">${this._country.languages.map(
+              (lang) => lang.name + " (" + lang.nativeName + ")"
+            )}
+            </td>
+            </tr>
             </tbody>
           </table>
           <table class="table-fixed w-full mb-5">

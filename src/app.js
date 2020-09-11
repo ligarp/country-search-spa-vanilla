@@ -5,10 +5,10 @@ import "./components/country-list";
 import "./components/country-detail";
 import "./components/error-message";
 
-var root = null;
-var useHash = true;
-var hash = "#!";
-var router = new Navigo(root, useHash, hash);
+const root = null;
+const useHash = true;
+const hash = "#!";
+const router = new Navigo(root, useHash, hash);
 
 router
   .on(function () {
